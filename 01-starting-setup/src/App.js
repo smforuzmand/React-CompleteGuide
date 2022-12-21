@@ -41,6 +41,7 @@ const App = () => {
 
   return (
     <div>
+      {/* the App component has connection to  both child components */}
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
