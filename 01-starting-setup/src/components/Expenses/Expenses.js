@@ -7,12 +7,23 @@ import ExpenseFilter from './ExpenseFilter';
 
 const Expenses = (props) => {
 
-    const [expenseFilter, setExpenseFilter] = useState('')
+    const [pickedYear, setPickedYear] = useState('2020');
+    // we need to pass a function to the component to call it whenever new value is chosen in the fuunction 
+    const filteredChangeHandler = selectedYear => {
+        console.log(selectedYear);
+
+
+        setPickedYear(selectedYear);
+
+    }
+
 
     return (
         <div>
-            <ExpenseFilter />
             <Card className="expenses">
+                {/* the below event is ourself for accepting the above function */}
+                <ExpenseFilter firstYear={pickedYear} onFileterChange={filteredChangeHandler} />
+
                 <ExpenseItem
                     title={props.items[0].title}
                     amount={props.items[0].amount}
