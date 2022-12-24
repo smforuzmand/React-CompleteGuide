@@ -3,7 +3,7 @@ import './ExpenseFilter.css'
 const ExpenseFilter = (props) => {
 
     const dropDownEventHandler = (event) => {
-        // console.log(event.target.value);
+        console.log(event.target.value);
         // the below function has responsibility to send data to Expenses
         props.onFileterChange(event.target.value)
 

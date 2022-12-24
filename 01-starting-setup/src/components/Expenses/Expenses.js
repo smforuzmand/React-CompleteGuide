@@ -15,6 +15,10 @@ const Expenses = (props) => {
 
         setPickedYear(selectedYear);
 
+        //  -> setPicketYear -> selectYear ->
+        // filterChangeHandler ->onFilteredChange
+        // {ExpenseFilter} ->props.onFilteredChange
+
     }
 
 
@@ -24,6 +28,15 @@ const Expenses = (props) => {
                 {/* the below event is ourself for accepting the above function */}
                 <ExpenseFilter firstYear={pickedYear} onFileterChange={filteredChangeHandler} />
 
+                {props.items.map((expense) => (<ExpenseItem
+                    title={expense.title}
+                    amount={expense.amount}
+                    date={expense.date}
+
+
+
+                />))}
+                {/* 
                 <ExpenseItem
                     title={props.items[0].title}
                     amount={props.items[0].amount}
@@ -43,7 +56,7 @@ const Expenses = (props) => {
                     title={props.items[3].title}
                     amount={props.items[3].amount}
                     date={props.items[3].date}
-                />
+                /> */}
             </Card>
         </div>
     );
