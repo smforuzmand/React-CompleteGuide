@@ -26,6 +26,8 @@ const App = () => {
   };
 
   let content = (
+
+
     <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
   );
 
