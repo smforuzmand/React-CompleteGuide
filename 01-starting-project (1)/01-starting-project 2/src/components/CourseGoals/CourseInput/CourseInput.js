@@ -18,7 +18,9 @@ const FormControl = styled.div`.form-control {
   & input {
     display: block;
     width: 100%;
-    border: 1px solid #ccc;
+    //we ate going to insert a prop inside the styling using $ and curly braces
+    border: 1px solid ${props => (props.invalid ? 'red' : '#ccc')};
+    background: ${props => (props.invalid ? '#ffd7d7' : 'transparent')};
     font: inherit;
     line-height: 1.5rem;
     padding: 0 0.25rem;
@@ -40,12 +42,12 @@ const FormControl = styled.div`.form-control {
 const CourseInput = props => {
     const [enteredValue, setEnteredValue] = useState('');
 
-    const [isValid, setIsVAlid] = useState(true);
+    const [isValid, setIsValid] = useState(true);
 
 
     const goalInputChangeHandler = event => {
         if (event.target.value.trim().length > 0) {
-            setIsVAlid(true);
+            setIsValid(true);
         }
         setEnteredValue(event.target.value);
     };
@@ -53,7 +55,7 @@ const CourseInput = props => {
     const formSubmitHandler = event => {
         event.preventDefault();
         if (enteredValue.trim().length === 0) {
-            setIsVAlid(false);
+            setIsValid(false);
             return;
         }
         props.onAddGoal(enteredValue);
@@ -62,7 +64,7 @@ const CourseInput = props => {
     return (
         <form onSubmit={formSubmitHandler}>
             {/* <div className={`from-control ${!isValid ? 'invalid' : ''}`}> */}
-            <FormControl/>
+            <FormControl invalid={!isValid}/>
                 <label>Course Goal</label>
                 <input type="text"
                        onChange={goalInputChangeHandler}/>
